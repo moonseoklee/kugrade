@@ -1,0 +1,27 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!--
+Inspired by http://dribbble.com/shots/917819-iPad-Calendar-Login?list=shots&sort=views&timeframe=ever&offset=461
+-->
+<div class="jumbotron">
+  <div class="container">
+    <span class="glyphicon glyphicon-list-alt"></span>
+    <h2>KUGRADE</h2>
+    <div class="box">
+        <form method="POST" action=''>{% csrf_token %}
+        <input type="text" name ="username" id="username">
+        <input type="password" name="password" id="password">
+        
+        <input id="submit" type="submit" value="Click" />
+      <!-----button class="btn btn-default full-width" type='submit' ><span class="glyphicon glyphicon-ok"></span></button--->
+        </form>
+    </div>
+  </div>
+</div>
