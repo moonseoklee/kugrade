@@ -1,41 +1,75 @@
-
+{% load static %}
 <!DOCTYPE HTML>
 
 <html>
-<head>  
-<script>
+<head>
+<style>
+body{
+	background-color:brown
+}
+</style>
+<script type="text/javascript">
 
 var a = "{{score|escapejs}}";
+var b = "{{info|escapejs}}";
 a = JSON.parse(a.replace(/'/g,'"'));
+a = Object.values(a);
+b = JSON.parse(b.replace(/'/g,'"'));
+b = Object.values(b);
 console.log(a);
+console.log(b);
+let dp = [];
+var temp = {};
+for(var i=0;i<a.length;i++){
+	for(var j=0;j<a[i].length;j++){
+		temp = {label:a[i][j][0]+'-'+a[i][j][1] ,y:Number(a[i][j][5]),color:'Black'};
+		
+		dp.push(temp);
+	}
+}
+let jeonpil = [];
+let jeonseon = [];
+let gyo = [];
+let totalJeonpil=0,totalJeonseon=0,totalGyo = 0;
+
+for(var i=0;i<b.length;i++){
+	for(var j=0;j<b[i].length;j++){
+		if(b[i][j][4]=="전공선택"){
+			jeonseon.push((b[i][j]));
+			totalJeonseon+=Number(b[i][j][7]);
+		}else if(b[i][j][4]=="전공필수"){
+			jeonpil.push((b[i][j]));
+			totalJeonpil+=Number(b[i][j][7]);
+		}
+		else{
+			gyo.push((b[i][j]));
+			totalGyo+=Number(b[i][j][7]);
+		}
+
+	}
+}
+console.log(jeonpil,jeonseon,totalGyo,totalJeonpil,totalJeonseon)
+console.log(dp);
 //var info = JSON.parse({{result}}".toString();
 window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	theme: "light2",
+	axisY:{
+   		maximum: 4.5,
+ 	},
 	title:{
-		text: "Simple Line Chart"
+		text: "전학기 성적",
+		fontColor: "#9c1e08"
 	},
 	axisY:{
 		includeZero: false
 	},
 	data: [{        
-		type: "line",       
-		dataPoints: [
-			{ y: Number(a[2014][0][5])},
-			{ y: 414},
-			{ y: 520, indexLabel: "highest",markerColor: "red", markerType: "triangle" },
-			{ y: 460 },
-			{ y: 450 },
-			{ y: 500 },
-			{ y: 480 },
-			{ y: 480 },
-			{ y: 410 , indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
-			{ y: 500 },
-			{ y: 480 },
-			{ y: 510 }
-		]
+		type: "line",   
+		lineColor: "red",    
+		dataPoints: dp,
 	}]
 });
 chart.render();
@@ -47,4 +81,44 @@ chart.render();
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
+<body>
+		<div class="wrap-table100">
+			<div class="table100 ver1">							
+					<div class="table100-nextcols">
+							<style type="text/css">
+								.tg  {border-collapse:collapse;border-spacing:0;}
+								.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+								.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+								.tg .tg-alu3{background-color:#000000;color:#ffffff;border-color:#643403;text-align:left;vertical-align:top}
+								.tg .tg-layd{font-size:14px;font-family:"Arial Black", Gadget, sans-serif !important;;background-color:#cb0000;color:#ffffff;border-color:#643403;text-align:left;vertical-align:top}
+								.tg .tg-xmhi{font-family:'Nanum Pen Script',culsive;background-color:#cb0000;color:#ffffff;border-color:#643403;text-align:left;vertical-align:top}
+								</style>
+								<table class="tg">
+								  <tr>
+									<th class="tg-layd">총학점</th>
+									<th class="tg-xmhi">이수학점</th>
+									<th class="tg-xmhi">전공필수</th>
+									<th class="tg-xmhi">전공선택</th>
+									<th class="tg-xmhi">교양</th>
+								  </tr>
+								  <tr>
+									<td class="tg-alu3"><script type="text/javascript">document.write('130')</script></td>
+									<td class="tg-alu3"><script type="text/javascript">document.write((totalGyo+totalJeonpil+totalJeonseon).toString())</Script></td>
+									<td class="tg-alu3"><script type="text/javascript">document.write(totalJeonpil.toString())</Script></td>
+									<td class="tg-alu3"><script type="text/javascript">document.write(totalJeonseon.toString())</Script></td>
+									<td class="tg-alu3"><script type="text/javascript">document.write(totalGyo.toString())</Script></td>
+								  </tr>
+								</table>
+					</div>
+				
+			
+		</div>
+	</div>
+
+
+</body>
+
+
+
+
 </html>

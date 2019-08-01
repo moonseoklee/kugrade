@@ -38,7 +38,7 @@ def login(id,pw):
             try:
                 gradeArr[tempArr[0]].append(tempArr)
             except KeyError:
-                gradeArr[tempArr[0]] = tempArr           
+                gradeArr[tempArr[0]] = [tempArr]
             
             tempArr=[]
         else:
