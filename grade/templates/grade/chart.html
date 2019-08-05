@@ -1,4 +1,5 @@
 {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'kugrade/css/table.css' %}"/>
 <!DOCTYPE HTML>
 
 <html>
@@ -81,41 +82,37 @@ chart.render();
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
+
+
 <body>
-		<div class="wrap-table100">
-			<div class="table100 ver1">							
-					<div class="table100-nextcols">
-							<style type="text/css">
-								.tg  {border-collapse:collapse;border-spacing:0;}
-								.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-								.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-								.tg .tg-alu3{background-color:#000000;color:#ffffff;border-color:#643403;text-align:left;vertical-align:top}
-								.tg .tg-layd{font-size:14px;font-family:"Arial Black", Gadget, sans-serif !important;;background-color:#cb0000;color:#ffffff;border-color:#643403;text-align:left;vertical-align:top}
-								.tg .tg-xmhi{font-family:'Nanum Pen Script',culsive;background-color:#cb0000;color:#ffffff;border-color:#643403;text-align:left;vertical-align:top}
-								</style>
-								<table class="tg">
-								  <tr>
-									<th class="tg-layd">총학점</th>
-									<th class="tg-xmhi">이수학점</th>
-									<th class="tg-xmhi">전공필수</th>
-									<th class="tg-xmhi">전공선택</th>
-									<th class="tg-xmhi">교양</th>
-								  </tr>
-								  <tr>
-									<td class="tg-alu3"><script type="text/javascript">document.write('130')</script></td>
-									<td class="tg-alu3"><script type="text/javascript">document.write((totalGyo+totalJeonpil+totalJeonseon).toString())</Script></td>
-									<td class="tg-alu3"><script type="text/javascript">document.write(totalJeonpil.toString())</Script></td>
-									<td class="tg-alu3"><script type="text/javascript">document.write(totalJeonseon.toString())</Script></td>
-									<td class="tg-alu3"><script type="text/javascript">document.write(totalGyo.toString())</Script></td>
-								  </tr>
-								</table>
-					</div>
-				
-			
-		</div>
-	</div>
-
-
+	<table>
+		<thead>
+			<tr>
+				<th>총학점</th>
+				<th>이수학점</th>
+				<th>전공필수</th>
+				<th>전공선택</th>
+				<th>교양</th>
+			</tr>
+		</thead>
+		<tr>
+			<td>
+				<script type="text/javascript">document.write('130')</script>
+			</td>
+			<td>
+				<script type="text/javascript">document.write((totalGyo + totalJeonpil + totalJeonseon).toString())</Script>
+			</td>
+			<td>
+				<script type="text/javascript">document.write(totalJeonpil.toString())</Script>
+			</td>
+			<td>
+				<script type="text/javascript">document.write(totalJeonseon.toString())</Script>
+			</td>
+			<td>
+				<script type="text/javascript">document.write(totalGyo.toString())</Script>
+			</td>
+		</tr>
+	</table>
 </body>
 
 
