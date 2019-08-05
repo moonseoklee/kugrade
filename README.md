@@ -1,5 +1,6 @@
 # KUGrade
 
+![loginView](https://user-images.githubusercontent.com/35364566/62442055-8a4db480-b791-11e9-8a7e-f816b05e1894.PNG)
 
 
 Easily check your entire grade points, only portal ID and password are required
