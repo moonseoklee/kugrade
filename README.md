@@ -17,7 +17,6 @@ Dillinger uses a number of open source projects to work properly:
 
 * Django
 * CanvasJS
-* Webdriver Selenium
 * Bootstrap
 
 Tell me if there is a problem with copyright. I'll make an immediate amendment.
